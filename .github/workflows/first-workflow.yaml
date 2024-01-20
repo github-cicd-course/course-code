@@ -1,0 +1,17 @@
+# Before the start, install GitHub Actions VSCode extension
+name: First Workflow
+on: [push] # Whenever we push something to our repository, we need this workflow to run
+
+# Jobs to run
+jobs:
+    run-shell-commands:
+        runs-on: ubuntu # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+        # Create an array with objects
+        steps:
+            - name: echo a string
+              run: echo "Hello World"
+            - name: Multiline Command
+              run: | 
+                node -v
+                nmp -v
+
