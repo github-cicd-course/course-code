@@ -13,5 +13,4 @@ jobs:
       - name: Multiline Command
         run: | 
           node -v
-          nmp -v
-          
+          npm -v
