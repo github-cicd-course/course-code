@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
     # Create an array with objects
     steps:
-      - name: echo a string
+      - name: Echo a string
         run: echo "Hello World"
-      - name: Multiline Command
+      - name: Multiline command that checks Node and NPM versions
         run: | 
           node -v
           npm -v
