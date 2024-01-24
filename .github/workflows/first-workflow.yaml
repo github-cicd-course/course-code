@@ -30,5 +30,6 @@ jobs:
     steps:
       - name: Echo a string
         run: Write-Output "Windows String"
+      # 'doesnotexist' in this Error Step is a placeholder for a command that intentionally gives you an error (for demonstration purposes) 
       - name: Error Step
         run: doesnotexist
