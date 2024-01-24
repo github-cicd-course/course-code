@@ -25,4 +25,10 @@ jobs:
   dependent-job:
     runs-on: windows-latest
     # Setting 'needs' key so this job depends on the firs job in this file (run-shell-commands)
-    
+    # This key can be a job ID or and array of job ID's []
+    needs: run-shell-commands
+    steps:
+      - name: Echo a string
+        run: Write-Output "Windows String"
+      - name: Error Step
+        run: doesnotexist
