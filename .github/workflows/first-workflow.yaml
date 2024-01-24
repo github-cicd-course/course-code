@@ -14,3 +14,6 @@ jobs:
         run: | 
           node -v
           npm -v
+  parallel-job-macos:
+    runs-on: macos-latest
+    
