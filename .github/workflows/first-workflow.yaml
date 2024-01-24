@@ -14,6 +14,15 @@ jobs:
         run: | 
           node -v
           npm -v
+  # Example of parallel job
   parallel-job-macos:
     runs-on: macos-latest
+    steps:
+      # Key to view software version
+      - name: View SW version
+        run: sw_vers
+  # Example of dependent job
+  dependent-job:
+    runs-on: windows-latest
+    # Setting 'needs' key so this job depends on the firs job in this file (run-shell-commands)
     
