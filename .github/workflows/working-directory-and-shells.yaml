@@ -7,7 +7,7 @@ defaults:
         # Overriding the working directory for the whole Workflow
         # working-directory: /any/directory/
 jobs:
-    display-wd-info:
+    display-wd-ubuntu-info:
         runs-on: ubuntu-latest
         steps:
             - name: Display Working Directory & List Files for Ubuntu
