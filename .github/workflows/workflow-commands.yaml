@@ -10,13 +10,26 @@ jobs:
               run: echo "::error::Missing semicolon"
             # Message with parameters
             - name: Setting an error message with parameters
-              run: echo "::error title:Error title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+              run: echo "::error title=Error title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
             # Debug message 
             - name: Setting a debug message with parameters
-              run: echo "::debug title:Debug title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+              run: echo "::debug title=Debug title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
             # Warning message
             - name: Setting a warning message with parameters
-              run: echo "::warning title:Warning title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+              run: echo "::warning title=Warning title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
             # Notice Message
             - name: Setting a notice message with parameters
-              run: echo "::notice title:Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+              run: echo "::notice title=Notice title,file=app.js,line=2,endLine=3,col=5,endColumn=7::Missing Semicolon"
+            - name: Group of logs
+              run: |
+                echo "::group::My group titles"
+                echo "Inside group"
+                echo "::endgroup::"
+            # First echo in pipe starts a group andgives your group a title
+            # Second echo "inside group" is a sample to show that this will live inside the group when you expand and colapse your debug message
+            # Third echo closes your group and with that anything you echo between is going to live in the group
+            # Example to mask a string or something that is sensitive and you don't want to display it in your logs
+            - name: Masking a value
+              run: echo "::add-mask::Secret String"
+            - name: Echo a string
+              run: echo "Secret String"
