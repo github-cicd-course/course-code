@@ -1,0 +1,25 @@
+name: Simple Action
+on: [push]
+
+jobs:
+    simple-action:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Simple JS Action
+              id: greet
+              # To reference action use 'uses' key. If action is private (lives inside of your repo) you can reference it with the path where your actions live
+              # or if it's a public action that lives on a public repository you can refetence it with user with username/repository name
+              # with @ at the end of reference you can specify version, branch name or a commit ID (SHA)
+                # With branch, we're going to use the code for the action that lives on e.g @main (or any other) branch
+                # With version, it can be main version e.g @v1, latest version e.g. @v1.2 or a specific end version e.g. @v1.1.3
+                # With commit ID, you can choose any commit from actions repository, copy commit SHA and paste it e.g. @e78hdda66321mmfp14poed49124
+              uses: actions/hello-world-javascript-action@d984cb2e617ed5328d424000d8f3ac5b90787d08
+              # Action can also recieve inputs with 'with' key.
+              # Usually defined in README.md
+              with:
+                who-to-greet: Dino
+            # Actions can produce uotputs
+            # We can use outputs in subsequent steps. Output of this job is defined with 'id' step above
+            - name: Log Greeting Time
+            # To reference the 'id' step use the following syntax bellow
+              run: echo "${{ steps.greet.outputs.time }}"
