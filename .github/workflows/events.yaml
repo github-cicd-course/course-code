@@ -9,3 +9,12 @@ jobs:
                 echo $GITHUB_SHA
                 echo $GITHUB_REF
             - uses: actions/checkout@v4.1.1
+# After pushing check your workflow echo for GITHUB_SHA and open your repository code commits to compare SHA (also refs should be pushed on main)
+
+# Create a new branch, open your app.js and add another line of alerts, commit the changes and open choose Compare & pull request from your repo.
+
+# By opening a pull request it should trigger a new workflow run. You can check that in your repo Actions.
+
+# You will see that your workflow has run three times.
+
+# 
