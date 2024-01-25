@@ -45,4 +45,4 @@ jobs:
               shell: python
               run: |
                 import platform
-                print(paltform.processor())
+                print(platform.processor())
