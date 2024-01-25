@@ -1,16 +1,26 @@
 name: Working Dir & Shells
 on: [push]
+# Default shell that is going to be used for Ubuntu job in this workflow
+defaults:
+    run:
+        shell: bash
+        # Overriding the working directory for the whole Workflow
+        # working-directory: /any/directory/
 jobs:
     display-wd-info:
         runs-on: ubuntu-latest
         steps:
-            - name: Display Working Directory & List Files
+            - name: Display Working Directory & List Files for Ubuntu
               run: |
                 pwd
                 ls -a
                 echo $GITHUB_SHA
                 echo $GITHUB_REPOSITORY
                 echo $GITHUB_WORKSPACE
+            # Overriding working directory of Linux(Ubuntu) runner for this job. Can be set to override for the whole workflow (See line 8) 
+            - name: Change Working Dir
+              working-directory: /home/runner
+              run: pwd
             # list current directory
             # list all files
             # echo the ID (SHA) of the commit
@@ -18,11 +28,21 @@ jobs:
             # echo default workspace for out machine (default directory used when we run any commands in our steps)
     display-wd-info-windows:
         runs-on: windows-latest
+        # Default shell for Windows job
+        defaults:
+            run:
+                shell: pwsh
         steps:
-            - name: Display Working Directory & List Files
+            - name: Display Working Directory & List Files for Windows
               run: |
-                pwd
-                ls -a
-                echo $GITHUB_SHA
-                echo $GITHUB_REPOSITORY
-                echo $GITHUB_WORKSPACE
+                Get-Location
+                dir
+                echo $env:GITHUB_SHA
+                echo $env:GITHUB_REPOSITORY
+                echo $env:GITHUB_WORKSPACE
+            # With this shell in a new step you override a shell on the job and workflow level. So it is going to override powershell and bash shells 
+            - name: Python Shell
+              shell: python
+              run: |
+                import platform
+                print(paltform.processor())
