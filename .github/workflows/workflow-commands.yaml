@@ -33,3 +33,5 @@ jobs:
               run: echo "::add-mask::Secret String"
             - name: Echo a string
               run: echo "Secret String"
+            # With ::add-mask:: you won't see your string value if you try to echo it in your workflow. It will be like this `***`
+            
