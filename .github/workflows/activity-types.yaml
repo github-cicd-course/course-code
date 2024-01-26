@@ -1,0 +1,20 @@
+name: Repository Events
+# Instead of specifying your 'on' key as an array, you can specify it as an object and the keys in our objects will be the events like push, pull_request..
+# This is particularly useful when you need a specific activity type tat will trigger the workflow
+# So, pull_request can have types by adding 'types' key in an array (any activity types that triggers pull_request)
+# If you have Red Hat's YAML extension, hover over types to see more
+on:
+    push:
+    pull_request:
+        types: [opened, assigned, reopened, synchronize]
+    issues:
+        types: [opened]
+
+jobs:
+    chekout-test:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo $GITHUB_SHA
+                echo $GITHUB_REF
+            - uses: actions/checkout@v4.1.1
