@@ -1,4 +1,4 @@
-name: Repository Events
+name: Activity Types
 # Instead of specifying your 'on' key as an array, you can specify it as an object and the keys in our objects will be the events like push, pull_request..
 # This is particularly useful when you need a specific activity type tat will trigger the workflow
 # So, pull_request can have types by adding 'types' key in an array (any activity types that triggers pull_request)
