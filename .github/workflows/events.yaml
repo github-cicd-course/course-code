@@ -22,4 +22,9 @@ jobs:
 
 # Issues:
     # When opening an issue you usually open it in the main branch
-    # Go to your issues
+    # Go to your issues and create one to test
+    # Close the issue and you will trigger a new run (check what events trigger the workflow for issues)
+
+# Pull requests:
+    # By default, a workflow only runs when a pull_request event's activity type is opened, synchronize, or reopened
+    # That means if we have try to close the pull request from this example it will not trigger a new workflow run
