@@ -5,8 +5,11 @@ name: Activity Types
 # If you have Red Hat's YAML extension, hover over types to see more
 on:
     push:
+    # For testing purposes, create a new pull request from feature/feata branch and assign yourself to the pull request to test these types
+    # Closing pull request doesn't trigger any run
     pull_request:
         types: [opened, assigned, reopened, synchronize]
+    # Workflow runs only when opening a new issue
     issues:
         types: [opened]
 
