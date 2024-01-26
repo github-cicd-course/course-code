@@ -11,10 +11,15 @@ jobs:
             - uses: actions/checkout@v4.1.1
 # After pushing check your workflow echo for GITHUB_SHA and open your repository code commits to compare SHA (also refs should be pushed on main)
 
-# Create a new branch, open your app.js and add another line of alerts, commit the changes and open choose Compare & pull request from your repo.
+# Create a new branch called feature/feata, open your app.js and add another line of alerts, commit the changes and open choose Compare & pull request from your repo.
 
 # By opening a pull request it should trigger a new workflow run. You can check that in your repo Actions.
 
 # You will see that your workflow has run three times.
+            # First one happened just by creating a new branch and 'on push' event ran the workflow
+            # Second one happend because we pushed and didn't specifiy any branch (in your jobs logs, you can see specified SHA commit and REF)
+            # Third one happend because we openeded a pull request (in your jobs logs, you can see refs/pull/1/merge)
 
-# 
+# Issues:
+    # When opening an issue you usually open it in the main branch
+    # Go to your issues
