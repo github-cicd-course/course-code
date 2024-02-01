@@ -1,0 +1,26 @@
+# This workflow adds an automated comment whenever any pull_request is opened.
+name: Pull Request Comment
+on:
+    pull_request_target:
+        types: [opened]
+jobs:
+    pr-comment:
+        runs-on: ubuntu-latest
+        # Using actions in steps to write JavaScript in this workflow
+        # Open octokit/rest.js to check GitHub REST API client documentation on how to write a comment for pull request
+        # On the left side pane open 'Issues' and look for 'Create an issue comment' for usage
+        steps:
+            - name: Comment on New PRs
+              uses: actions/github-script@v7.0.1
+              with:
+              # Inputs
+              # Context contains information about our repo or about the event thet triggers the workflow
+              # Issue number is a pull_request number, so context of issue must contain a issue/pr number 
+                script: |
+                  github.rest.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    body: 'Tanks for contriuting',
+                  });
+
