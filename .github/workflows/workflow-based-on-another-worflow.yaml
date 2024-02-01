@@ -1,4 +1,5 @@
 # This is an example of running a workflow based on another workflow, in this case "Repository Events" form events.yaml file
+# Based on types and filters (branches) in this workflow, this will run when the 'Repository Events' wokrflow is completed as long as it ran on the specified main branch
 name: Workflow Run
 on:
     workflow_run:
@@ -6,13 +7,16 @@ on:
         workflows: [Repository Events]
         # activity types can also be requested or in progress
         types: [completed]
+        # In workflow run events you can also use filtering like branches and branches-ignore
+        branches:
+            - main
 jobs:
     echo-string:
         runs-on: ubuntu-latest
         steps:
             - run: echo "I was triggered because 'Repository Events" was completed
 
-# After thhe push, in your Actions tab you should see two workflows running at the same time. 'Workflow Run' will wait until 'Repository Events'
+# After the push, in your Actions tab you should see two workflows running at the same time. 'Workflow Run' will wait until 'Repository Events'
 # workflow finish and then run and echo a message upon completion.
 
 # NOTE: You can only have up to three levels of nesting is allowed. Any workflow after a third one won't run.
