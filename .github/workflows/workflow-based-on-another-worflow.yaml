@@ -11,3 +11,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: echo "I was triggered because 'Repository Events" was completed
+
+# After thhe push, in your Actions tab you should see two workflows running at the same time. 'Workflow Run' will wait until 'Repository Events'
+# workflow finish and then run and echo a message upon completion.
+
+# NOTE: You can only have up to three levels of nesting is allowed. Any workflow after a third one won't run.
+
