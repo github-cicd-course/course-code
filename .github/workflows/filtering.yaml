@@ -1,0 +1,41 @@
+# Filtering our workflow runs by branches, tags and paths
+# If you have multiple different filters, like in this example, all the filters need to be matched in order for workflow to run.
+name: Filtering
+on:
+    push:
+        # Adding 'branches' option. It can be an array of branches that we can specify so workflow only runs when we push to those branches
+        branches:
+            - main
+            - "feature/*" # this array pattern matches branches like feature/featA, feature/featB, but not @feature/featA/featB
+            - "feature/**" # this array pattern matches all of the above. Cheat sheet: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+            - "!feature/featA" # You can exclude the branch with this pattern or with the example below. Note that if you put this exclusion pattern before inclusion patterns it will still run, so order is important
+        # You can also use 'branches-ignore' to exclude the branches from workflow run, but you cannnot use them together with 'branches' filter pattern
+        # branches-ignore:
+        #    - develop
+        tags:
+            - v1.* # matches v1.1, v1.1.2
+            - "!v1.1.1" # excludes version
+        # With paths we can filter our workflow to make it run only if we push specific files that match any of the pattern we list below
+        paths:
+            - "**.js" # Check GitHub Docs cheat sheet for 'Patterns to match file paths'
+            - "!app.js" # similar to branches and tags, you can exclude paths or a specific file from triggering the workflow (you can also use 'paths-ignore')
+    pull_request:
+        types: [opened, assigned, reopened, synchronize]
+        # For pull requests you can also use branches and paths and ignore both, but no tags
+        # So this workflow will only run for pull requests that include a change in a JS file and is targeting the main branch. 
+        # Both applies for pull requests and pull request target events
+        branches:
+            - main
+        paths:
+            - "**.js"
+
+jobs:
+    chekout-test:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo $GITHUB_SHA
+                echo $GITHUB_REF
+            - uses: actions/checkout@v4.1.1
+
+# This file is only for educational purpoes, so in order for this to work, create branches, tags and ensure correct paths
