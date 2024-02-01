@@ -1,0 +1,13 @@
+# This is an example of running a workflow based on another workflow, in this case "Repository Events" form events.yaml file
+name: Workflow Run
+on:
+    workflow_run:
+        # In square brackets you can set multiple workflows that will run based on this one. This one runs based on events.yaml wf so have it enabled
+        workflows: [Repository Events]
+        # activity types can also be requested or in progress
+        types: [completed]
+jobs:
+    echo-string:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "I was triggered because 'Repository Events" was completed
