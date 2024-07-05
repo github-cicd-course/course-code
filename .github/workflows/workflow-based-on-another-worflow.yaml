@@ -1,4 +1,4 @@
-# This is an example of running a workflow based on another workflow, in this case "Repository Events" form events.yaml file
+# This is an example of running a workflow based on another workflow, in this case "Repository Events" fromm events.yaml file
 # Based on types and filters (branches) in this workflow, this will run when the 'Repository Events' wokrflow is completed as long as it ran on the specified main branch
 name: Workflow Run
 on:
